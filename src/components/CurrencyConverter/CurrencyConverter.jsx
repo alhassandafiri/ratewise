@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-import ConversionResult from "./components/ConversionResult/ConversionResult";
-import CurrencyInput from "./components/CurrencyInput/CurrencyInput";
-import Header from "./components/Header/Header";
-import SwapButton from "./components/SwapButton/SwapButton";
-import styles from './CurrencyConverter.module.css'
 import { fetchMockConversion } from '../../api/mockApi';
+import ConversionResult from "../ConversionResult/ConversionResult";
+import CurrencyInput from "../CurrencyInput/CurrencyInput";
+import Header from "../Header/Header";
+import SwapButton from "../SwapButton/SwapButton";
+import styles from './CurrencyConverter.module.css';
 
 const currenciesList = ['USD', 'GBP', 'EUR', 'CAD', 'AUD', 'JPY'];
 

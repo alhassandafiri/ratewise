@@ -1,4 +1,4 @@
-import styles from '../styles/SwapButton.module.css'
+import styles from './SwapButton.module.css'
 
 function SwapButton() {
   return(

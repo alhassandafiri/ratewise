@@ -1,4 +1,4 @@
-import styles from '../styles/ConversionResult.module.css'
+import styles from './ConversionResult.module.css'
 
 function ConversionResult() {
   return(

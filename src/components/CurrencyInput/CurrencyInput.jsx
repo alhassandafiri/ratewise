@@ -1,4 +1,4 @@
-import styles from '../styles/CurrencyInput.module.css'
+import styles from './CurrencyInput.module.css'
 
 function CurrencyInput() {
   return(

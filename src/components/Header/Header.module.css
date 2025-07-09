@@ -1,12 +1,12 @@
 .headerSection {
   text-align: center;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 2rem;
 }
 
 .headerContent h1 {
-  font-size: 2rem;
+  font-size: 3rem;
+  font-weight: 700;
   color: var(--text-primary);
   margin: 0;
-  font-weight: 600;
+  letter-spacing: -1px;
 }

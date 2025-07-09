@@ -1,4 +1,5 @@
 import CurrencyConverter from "./components/CurrencyConverter/CurrencyConverter"
+import Header from "./components/Header/Header"
 import './App.css'
 
 function App() {

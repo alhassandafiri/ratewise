@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { fetchMockConversion } from '../../api/mockApi';
 import ConversionResult from "../ConversionResult/ConversionResult";
 import CurrencyInput from "../CurrencyInput/CurrencyInput";
-import Header from "../Header/Header";
 import SwapButton from "../SwapButton/SwapButton";
 import styles from './CurrencyConverter.module.css';
 
@@ -66,7 +65,6 @@ function CurrencyConverter() {
 
   return(
     <div className={styles.converterContainer}>
-      <Header />
       <main className={styles.converterBody}>
         <div className={styles.inputsRow}>
           <CurrencyInput 

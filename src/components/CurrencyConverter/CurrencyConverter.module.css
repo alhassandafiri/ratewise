@@ -1,0 +1,25 @@
+.converterContainer {
+  background-color: var(--surface-color);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+}
+
+.converterBody {
+  margin-top: 1.5rem;
+}
+
+.inputsRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .inputsRow {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}

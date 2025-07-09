@@ -4,7 +4,10 @@ import './App.css'
 function App() {
   return(
   <div className="App">
-    <CurrencyConverter />
+    <Header />
+    <main className="main-content">
+      <CurrencyConverter />
+    </main>
   </div>)
 }
 

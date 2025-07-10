@@ -6,6 +6,7 @@
 }
 
 .tableTitle {
+  color: var(--text-primary);
   font-size: 1.25rem;
   font-weight: 600;
   margin: 0 0 1.5rem 0;

@@ -68,7 +68,7 @@ function CurrencyConverter() {
       <main className={styles.converterBody}>
         <div className={styles.inputsRow}>
           <CurrencyInput 
-          label='amount'
+          label='Amount'
           currencies={currenciesList}
           selectedCurrency={fromCurrency}
           onCurrencyChange={e => setFromCurrency(e.target.value)}

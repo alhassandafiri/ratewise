@@ -36,7 +36,7 @@ function CustomDropDown({ options, selectedValue, onSelect }) {
       <div className={styles.dropdownSelected} onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.selectedContent}>
           <img
-            src={`https://flagcdn.com/16x12/${selectedCountryCode}.png`}
+            src={`https://flagcdn.com/w40/${selectedCountryCode}.png`}
             alt={`${selectedValue} flag`}
             className={styles.flag}
           />
@@ -56,7 +56,7 @@ function CustomDropDown({ options, selectedValue, onSelect }) {
                 onClick={() => handleOptionClick(option)}
               >
                 <img
-                  src={`https://flagcdn.com/16x12/${countryCode}.png`}
+                  src={`https://flagcdn.com/w40/${countryCode}.png`}
                   alt={`${option} flag`}
                   className={styles.flag}
                 />

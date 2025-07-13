@@ -192,7 +192,28 @@ body[data-theme="dark"] .option:hover {
   max-height: 200px;
   overflow-y: auto;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) transparent;
 }
+
+.dropdownOptions::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropdownOptions::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dropdownOptions::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  border: 2px solid var(--surface-color);
+}
+
+.dropdownOptions::-webkit-scrollbar-thumb:hover {
+  background-color: var(--secondary-color);
+}
+
 
 .option {
   display: flex;

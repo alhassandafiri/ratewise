@@ -71,7 +71,7 @@ function CurrencyConverter() {
           label='Amount'
           currencies={currenciesList}
           selectedCurrency={fromCurrency}
-          onCurrencyChange={e => setFromCurrency(e.target.value)}
+          onCurrencyChange={setFromCurrency}
           amount={amount}
           onAmountChange={e => setAmount(e.target.value)}
           />
@@ -84,7 +84,7 @@ function CurrencyConverter() {
           label='Converted to'
           currencies={currenciesList}
           selectedCurrency={toCurrency}
-          onCurrencyChange={e => setToCurrency(e.target.value)}
+          onCurrencyChange={setToCurrency}
           amount={convertedAmount === null ? '' : convertedAmount}
           onAmountChange={() => {}}
           isAmountDisabled={true}

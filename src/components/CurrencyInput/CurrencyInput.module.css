@@ -14,10 +14,8 @@
 
 .inputContainer {
   display: flex;
-  background-color: var(--background-color);
   border: 1px solid var(--border-color);
   border-radius: 8px;
-  overflow: hidden;
   transition: border-color 0.2s;
 }
 
@@ -25,17 +23,20 @@
   border-color: var(--primary-color);
 }
 
-.amountInput, .currencySelect {
+.amountInput {
   background: none;
   border: none;
   color: var(--text-primary);
   font-size: 1.1rem;
   padding: 0.8rem;
+  width: 100%;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
 }
 
-.amountInput {
-  width: 100%;
-}
+.amountInput:focus {
+  outline: none;
+} 
 
 .amountInput:disabled {
   background-color: #252525;
@@ -56,4 +57,9 @@
 
 .currencySelect:focus {
   outline: none;
+}
+
+.dropdownWrapper {
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
 }

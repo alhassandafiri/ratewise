@@ -1,4 +1,5 @@
 import styles from './CurrencyInput.module.css'
+import CustomDropDown from '../CustomDropDown/CustomDropDown';
 
 function CurrencyInput({
   label,
@@ -22,17 +23,13 @@ function CurrencyInput({
         min='0'
         />
 
-        <select
-        value={selectedCurrency}
-        onChange={onCurrencyChange}
-        className={styles.currencySelect}
-        >
-          {currencies.map((currency) => (
-            <option key={currency} value={currency}>
-              {currency}
-            </option>
-          ))}
-        </select>
+        <div className={styles.dropdownWrapper}>
+          <CustomDropDown 
+          options={currencies}
+          selectedValue={selectedCurrency}
+          onSelect={onCurrencyChange}
+          />
+        </div>
       </div>
     </div>
   )

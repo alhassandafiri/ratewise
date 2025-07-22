@@ -1,14 +1,68 @@
-import styles from './RatesTable.module.css'
+import { useEffect, useState } from 'react';
+import styles from './RatesTable.module.css';
 
-const popularRates = [
-  { from: 'USD', to: 'EUR', rate: 0.92 },
-  { from: 'USD', to: 'GBP', rate: 0.79 },
-  { from: 'USD', to: 'JPY', rate: 150.55 },
-  { from: 'EUR', to: 'GBP', rate: 0.85 },
-  { from: 'AUD', to: 'USD', rate: 0.66 }
-]
+import { currencyToCountryCode } from '../../utils/currencyUtils';
 
-function RatesTable() {
+function RatesTable({ onRowClick }) {
+
+  const [rates, setRates] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+
+  useEffect(() => {
+    const fetchRates = async () => {
+      try {
+        const response = await fetch('http://localhost/currency-api/public/api/rates');
+
+        if (!response.ok) {
+          throw new Error('Something went wrong while fetching rates.');
+        }
+        
+        const data = await response.json();
+
+        if (data.success) {
+          setRates(data.rates);
+        } else {
+          throw new Error(data.error || 'Failed to parse data.')
+        }
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchRates();
+
+  }, []);
+
+if (isLoading) {
+  return(
+    <section className={styles.tableContainer}>
+      <h2 className={styles.tableTitle}>
+      Live Exchange Rates
+      </h2>
+      <p style={{textAlign: 'center'}}>
+      Loading rates...
+      </p>
+    </section>
+  );
+}
+
+if (error) {
+  return(
+    <section className={styles.tableContainer}>
+      <h2 className={styles.tableTitle}>
+      Live Exchange Rates
+      </h2>
+      <p style={{textAlign: 'center', color: 'red'}}>
+      Error: {error}
+      </p>
+    </section>
+  );
+}
+
   return (
     <section className={styles.tableContainer}>
       <h2 className={styles.tableTitle}>Live Exchange Rates</h2>
@@ -18,16 +72,29 @@ function RatesTable() {
           <span>To</span>
           <span>Rate</span>
         </div>
-        {popularRates.map((pair, index) => (
-          <div key={index} className={styles.tableRow}>
+        {rates.map((pair, index) => (
+          <div key={index} 
+          className={styles.tableRow}
+          onClick={() => onRowClick(pair.from, pair.to)}
+          >
+             <span className={styles.currencyPair}>
+            <img
+              src={`https://flagcdn.com/w40/${currencyToCountryCode[pair.from]}.png`}
+              alt={`${pair.from} flag`}
+              className={styles.flag}
+            />
+            {pair.from}
+          </span>
+
             <span className={styles.currencyPair}>
-              <span className={styles.flag}></span> {/* In future, you can replace with flag icons */}
-              {pair.from}
-            </span>
-            <span className={styles.currencyPair}>
-              <span className={styles.flag}></span>
-              {pair.to}
-            </span>
+            <img
+              src={`https://flagcdn.com/w40/${currencyToCountryCode[pair.to]}.png`}
+              alt={`${pair.to} flag`}
+              className={styles.flag}
+            />
+            {pair.to}
+          </span>
+
             <span className={styles.rate}>{pair.rate.toFixed(4)}</span>
           </div>
         ))}

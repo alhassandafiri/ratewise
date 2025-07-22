@@ -2,9 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { IoChevronDown } from "react-icons/io5";
 import styles from './CustomDropDown.module.css';
 
-const currencyToCountryCode = {
-  USD: 'us', EUR: 'eu', GBP: 'gb', JPY: 'jp', AUD: 'au', CAD: 'ca'
-};
+import { currencyToCountryCode } from '../../utils/currencyUtils';
+
 
 function CustomDropDown({ options, selectedValue, onSelect }) {
   const [isOpen, setIsOpen] = useState(false);

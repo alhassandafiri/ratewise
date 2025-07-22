@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { fetchMockConversion } from '../../api/mockApi';
 import ConversionResult from "../ConversionResult/ConversionResult";
 import CurrencyInput from "../CurrencyInput/CurrencyInput";
 import SwapButton from "../SwapButton/SwapButton";
 import styles from './CurrencyConverter.module.css';
-
-const currenciesList = ['USD', 'GBP', 'EUR', 'CAD', 'AUD', 'JPY'];
+import { popularCurrencies } from '../../utils/currencyUtils';
 
 function CurrencyConverter() {
   const [amount, setAmount] = useState(1);
@@ -25,6 +23,11 @@ function CurrencyConverter() {
   }
 
   useEffect(() => {
+    if (!amount || isNaN(amount)) {
+      setConvertedAmount(0);
+      return;
+    }
+
     if (fromCurrency === toCurrency) {
       setConvertedAmount(amount);
       setExchangeRate(1);
@@ -32,25 +35,23 @@ function CurrencyConverter() {
     }
 
     const fetchConversion = async () => {
-      if (!amount) {
-        setConvertedAmount(0);
-        return;
-      }
-
       setIsLoading(true);
       try {
-        const response = await fetchMockConversion(fromCurrency, toCurrency);
+        const response = await fetch(`http://localhost/currency-api/public/api/convert?from=${fromCurrency}&to=${toCurrency}&amount=${amount}`);
 
-        if (response.success) {
-          const rate = response.rate;
-          setExchangeRate(rate);
-          setConvertedAmount((amount * rate).toFixed(4));
-        } else {
-          console.error(response.error);
-          setConvertedAmount(null);
+        if (!response.ok) {
+          throw new Error('Network response from backend was not ok.');
         }
 
+        const data = await response.json();
 
+        if (data.success) {
+          setExchangeRate(data.rate);
+          setConvertedAmount(data.convertedAmount);
+        } else {
+          console.error('API Error:', data.error);
+          setConvertedAmount(null);
+        }
       } catch (error) {
         console.error('Error fetching mock conversion rate:', error);
         setConvertedAmount(null);
@@ -69,7 +70,7 @@ function CurrencyConverter() {
         <div className={styles.inputsRow}>
           <CurrencyInput 
           label='Amount'
-          currencies={currenciesList}
+          currencies={popularCurrencies}
           selectedCurrency={fromCurrency}
           onCurrencyChange={setFromCurrency}
           amount={amount}
@@ -82,7 +83,7 @@ function CurrencyConverter() {
 
           <CurrencyInput 
           label='Converted to'
-          currencies={currenciesList}
+          currencies={popularCurrencies}
           selectedCurrency={toCurrency}
           onCurrencyChange={setToCurrency}
           amount={convertedAmount === null ? '' : convertedAmount}

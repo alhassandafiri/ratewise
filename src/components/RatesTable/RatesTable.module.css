@@ -48,3 +48,10 @@
   font-weight: 600;
   color: var(--secondary-color);
 }
+
+.flag {
+  width: 18px;
+  height: 14px; /* To maintain the aspect ratio */
+  border: 1px solid var(--border-color);
+  border-radius: 2px; 
+}

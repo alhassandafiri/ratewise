@@ -7,10 +7,10 @@ function App() {
   return(
   <div className="App">
     <Header />
-    <main className="main-content">
+    <div className="main-content">
       <CurrencyConverter />
       <RatesTable />
-    </main>
+    </div>
   </div>)
 }
 

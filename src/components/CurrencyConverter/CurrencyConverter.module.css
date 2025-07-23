@@ -1,13 +1,12 @@
 .converterContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   background-color: var(--surface-color);
   border-radius: 16px;
   padding: 2rem 2.5rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   border: 1px solid var(--border-color);
-}
-
-.converterBody {
-  margin-top: 1.5rem;
 }
 
 .inputsRow {

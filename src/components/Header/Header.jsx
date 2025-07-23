@@ -1,12 +1,17 @@
-import styles from './Header.module.css'
+import styles from './Header.module.css';
+import { HiOutlineSwitchHorizontal } from "react-icons/hi";
 
 function Header() {
    return(
-    <section className={styles.headerSection}>
+    <header className={styles.headerSection}>
       <div className={styles.headerContent}>
-        <h1>Currency Converter</h1>
+        <h1 className={styles.logo}>
+          <HiOutlineSwitchHorizontal className={styles.logoIcon} />
+          ratewise
+          <span>.</span>
+        </h1>
       </div>
-    </section>
+    </header>
    )
 }
 

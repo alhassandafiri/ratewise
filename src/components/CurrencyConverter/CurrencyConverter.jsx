@@ -5,6 +5,8 @@ import CurrencyInput from "../CurrencyInput/CurrencyInput";
 import SwapButton from "../SwapButton/SwapButton";
 import styles from './CurrencyConverter.module.css';
 import { popularCurrencies } from '../../utils/currencyUtils';
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'framer-motion';
 
 function CurrencyConverter() {
   const [amount, setAmount] = useState(1);
@@ -65,7 +67,11 @@ function CurrencyConverter() {
 
 
   return(
-    <div className={styles.converterContainer}>
+    <motion.section className={styles.converterContainer}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.4 }}>
       <main className={styles.converterBody}>
         <div className={styles.inputsRow}>
           <CurrencyInput 
@@ -101,7 +107,7 @@ function CurrencyConverter() {
         exchangeRate={exchangeRate}
         />
       </main>
-    </div>
+    </motion.section>
   );
 }
 

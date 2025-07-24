@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import styles from './RatesTable.module.css';
 
 import { currencyToCountryCode } from '../../utils/currencyUtils';
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'framer-motion';
 
 function RatesTable({ onRowClick }) {
 
@@ -64,7 +66,12 @@ if (error) {
 }
 
   return (
-    <section className={styles.tableContainer}>
+    <motion.section className={styles.tableContainer}
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: -20 }}
+  transition={{ duration: 0.4 }}>
+
       <h2 className={styles.tableTitle}>Live Exchange Rates</h2>
       <div className={styles.table}>
         <div className={styles.tableHeader}>
@@ -99,7 +106,7 @@ if (error) {
           </div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }
 

@@ -44,8 +44,7 @@ function CustomDropDown({ options, selectedValue, onSelect }) {
         </div>
       </div>
 
-      {isOpen && (
-        <div className={styles.dropdownOptions}>
+        <div className={`${styles.dropdownOptions} ${isOpen ? styles.dropdownOptionsOpen : ''}`}>
           {options.map((option) => {
             const countryCode = currencyToCountryCode[option] || 'xx';
             return (
@@ -64,7 +63,6 @@ function CustomDropDown({ options, selectedValue, onSelect }) {
             );
           })}
         </div>
-      )}
     </div>
   );
 }

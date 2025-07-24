@@ -5,6 +5,7 @@
   border-bottom: none;
   padding-top: 15;
   padding-left: 18px;
+  flex-grow: 1;
 }
 
 .logo {

@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CurrencyConverter from "./components/CurrencyConverter/CurrencyConverter";
 import Header from "./components/Header/Header";
 import RatesTable from "./components/RatesTable/RatesTable";
@@ -12,8 +13,10 @@ function App() {
       <NavBar />
     </div>
     <div className="main-content">
-      <CurrencyConverter />
-      <RatesTable />
+      <Routes>
+        <Route path='/' element={<CurrencyConverter />} />
+        <Route path='/rates' element={<RatesTable />} />
+      </Routes>
     </div>
   </div>)
 }

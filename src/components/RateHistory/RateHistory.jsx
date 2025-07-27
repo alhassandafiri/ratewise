@@ -53,7 +53,7 @@ function RateHistory() {
                 data={data}
                 margin={{top: 5, right: 20, left: -10, bottom: 5}}>
                     <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color)"/> 
-                    <XAxis dataKey="date" stroke="var(text-secondary)" fontSize={12} />
+                    <XAxis dataKey="date" stroke="var(--text-secondary)" fontSize={12} />
                     <YAxis stroke="var(--text-secondary)" fontSize={12} domain={['dataMin - 0.005', 'dataMax ' + 0.005]}/>
                     <Tooltip
                     contentStyle={{

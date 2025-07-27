@@ -1,3 +1,35 @@
+.dateSelector {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.dateButton {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.dateButton:hover {
+    border-color: var(--primary-color);
+    color: var(--text-primary);
+}
+
+.dateButton.active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--surface-color);
+}
+
 .controlsHeader {
     display: flex;
     justify-content: space-between;

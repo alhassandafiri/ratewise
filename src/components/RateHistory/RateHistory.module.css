@@ -1,0 +1,24 @@
+.chartContainer {
+    background-color: var(--surface-color);
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    width: 100%;
+}
+
+.chartTitle {
+    margin: 0 0 1.5rem 0;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.status {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.error {
+    color: #ff6b6b;
+}

@@ -3,6 +3,8 @@ import {
 LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 import { popularCurrencies } from '../../utils/currencyUtils';
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'framer-motion';
 
 import CustomDropdown from '../CustomDropDown/CustomDropDown';
 import styles from './RateHistory.module.css';
@@ -73,7 +75,11 @@ function RateHistory() {
     if(error) return <div className={`${styles.status} ${styles.error}`}>Error: {error}</div>;
 
       return (
-     <div className={styles.chartContainer}>
+    <motion.section className={styles.chartContainer}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.4 }}>
       <div className={styles.controlsHeader}>
         <h3 className={styles.chartTitle}>Rate History</h3>
         <div className={styles.controls}>
@@ -129,7 +135,7 @@ function RateHistory() {
            <div className={styles.status}>Select two different currencies to view history.</div>
         )}
       </div>
-    </div>
+    </motion.section>
   );
 }
 

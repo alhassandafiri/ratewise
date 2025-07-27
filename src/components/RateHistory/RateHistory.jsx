@@ -7,11 +7,19 @@ import { popularCurrencies } from '../../utils/currencyUtils';
 import CustomDropdown from '../CustomDropDown/CustomDropDown';
 import styles from './RateHistory.module.css';
 
+const dateRanges = [
+    { label: '1M', months: 1 },
+    { label: '3M', months: 3 },
+    { label: '6M', months: 6 },
+    { label: '1Y', months: 12 },
+    { label: '5Y', months: 60 },
+]
+
 
 function RateHistory() {
     const [fromCurrency, setFromCurrency] = useState('USD');
     const [toCurrency, setToCurrency] = useState('GBP');
-
+    const [activePeriod, setActivePeriod] = useState('1M');
 
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -27,14 +35,27 @@ function RateHistory() {
     const fetchHistory = async () => {
       setIsLoading(true);
       setError(null);
+
+      const selectedRange = dateRanges.find(range => range.label === activePeriod);
+      const today = new Date();
+      const startDate = new Date(today.setMonth(today.getMonth() - selectedRange.months));
+      const startDateString = startDate.toISOString().split('T')[0];
+
       try {
-        const response = await fetch(`http://localhost/currency-api/public/api/history?from=${fromCurrency}&to=${toCurrency}`);
+        const response = await fetch(`http://localhost/currency-api/public/api/history?from=${fromCurrency}&to=${toCurrency}&start_date=${startDateString}`);
         if (!response.ok) {
           throw new Error('Failed to fetch historical data.');
         }
+
         const result = await response.json();
         if (result.success) {
-          setData(result.history);
+          const formattedData = result.history.map(item => ({
+            ...item,
+            date: new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric'}),
+          }));
+
+          setData(formattedData);
+
         } else {
           throw new Error(result.error || 'An unknown API error occurred.');
         }
@@ -46,30 +67,32 @@ function RateHistory() {
     };
 
     fetchHistory();
-  }, [fromCurrency, toCurrency]);
+  }, [fromCurrency, toCurrency, activePeriod]);
 
     if(isLoading) return <div className={styles.status}>Loading chart data...</div>;
     if(error) return <div className={`${styles.status} ${styles.error}`}>Error: {error}</div>;
 
       return (
-    <div className={styles.chartContainer}>
+     <div className={styles.chartContainer}>
       <div className={styles.controlsHeader}>
-        <h3 className={styles.chartTitle}>
-          Rate History
-        </h3>
+        <h3 className={styles.chartTitle}>Rate History</h3>
         <div className={styles.controls}>
-          <CustomDropdown
-            options={popularCurrencies}
-            selectedValue={fromCurrency}
-            onSelect={setFromCurrency}
-          />
+          <CustomDropdown options={popularCurrencies} selectedValue={fromCurrency} onSelect={setFromCurrency} />
           <span className={styles.toText}>to</span>
-          <CustomDropdown
-            options={popularCurrencies}
-            selectedValue={toCurrency}
-            onSelect={setToCurrency}
-          />
+          <CustomDropdown options={popularCurrencies} selectedValue={toCurrency} onSelect={setToCurrency} />
         </div>
+      </div>
+      
+      <div className={styles.dateSelector}>
+        {dateRanges.map(range => (
+          <button
+            key={range.label}
+            className={`${styles.dateButton} ${activePeriod === range.label ? styles.active : ''}`}
+            onClick={() => setActivePeriod(range.label)}
+          >
+            {range.label}
+          </button>
+        ))}
       </div>
       
       <div className={styles.chartWrapper}>

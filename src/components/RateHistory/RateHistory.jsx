@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import {
 LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
-import { popularCurrencies } from '../utils/currencyUtils';
+import { popularCurrencies } from '../../utils/currencyUtils';
 
-import CustomDropdown from '../components/CustomDropdown/CustomDropdown';
+import CustomDropdown from '../CustomDropDown/CustomDropDown';
 import styles from './RateHistory.module.css';
 
 
@@ -57,7 +57,6 @@ function RateHistory() {
         <h3 className={styles.chartTitle}>
           Rate History
         </h3>
-        {/* --- STEP 3: ADD THE DROPDOWN CONTROLS --- */}
         <div className={styles.controls}>
           <CustomDropdown
             options={popularCurrencies}

@@ -1,16 +1,30 @@
 import { useEffect, useState } from 'react';
-import styles from './RatesTable.module.css';
-
 import { currencyToCountryCode } from '../../utils/currencyUtils';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+
+import styles from './RatesTable.module.css';
 
 function RatesTable({ onRowClick }) {
 
   const [rates, setRates] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [filter, setFilter] = useState('');
+  const [lastUpdated, setLastUpdated] = useState(null);
 
+  const navigate = useNavigate();
+  
+  const handleClick = (from, to) => {
+    navigate(`/?from=${from}&to=${to}`);
+  };
+
+  const filteredRates = rates.filter(
+    pair =>
+      pair.from.toLowerCase().includes(filter.toLowerCase()) ||
+      pair.to.toLowerCase().includes(filter.toLowerCase())
+  );
 
   useEffect(() => {
     const fetchRates = async () => {
@@ -22,6 +36,9 @@ function RatesTable({ onRowClick }) {
         }
         
         const data = await response.json();
+
+        setRates(data.rates);
+        setLastUpdated(new Date().toLocaleString());
 
         if (data.success) {
           setRates(data.rates);
@@ -73,13 +90,25 @@ if (error) {
   transition={{ duration: 0.4 }}>
 
       <h2 className={styles.tableTitle}>Live Exchange Rates</h2>
+
+      {lastUpdated && (
+        <p className={styles.lastUpdated}>Last Updated: {lastUpdated}</p>
+      )}
+
+      <input
+      type='text'
+      placeholder='Search for a currency...'
+      className={styles.searchInput}
+      value={filter}
+      onChange={(e) => setFilter(e.target.value)}/> 
+
       <div className={styles.table}>
         <div className={styles.tableHeader}>
           <span>From</span>
           <span>To</span>
           <span>Rate</span>
         </div>
-        {rates.map((pair, index) => (
+        {filteredRates.map((pair, index) => (
           <div key={index} 
           className={styles.tableRow}
           onClick={() => onRowClick(pair.from, pair.to)}
@@ -102,7 +131,15 @@ if (error) {
             {pair.to}
           </span>
 
-            <span className={styles.rate}>{pair.rate.toFixed(4)}</span>
+            <span className={styles.rate}>
+              {pair.rate.toFixed(4)}
+              <button 
+              className={styles.rowHint}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleClick(pair.from, pair.to);
+              }} aria-label={`Convert ${pair.from} to ${pair.to}`}> ↗</button>
+            </span>
           </div>
         ))}
       </div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import ConversionResult from "../ConversionResult/ConversionResult";
 import CurrencyInput from "../CurrencyInput/CurrencyInput";
@@ -15,6 +16,8 @@ function CurrencyConverter() {
   const [convertedAmount, setConvertedAmount] = useState(null);
   const [exchangeRate, setExchangeRate] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchParams] = useSearchParams();
+ 
 
   const handleSwapCurrencies = () => {
     setFromCurrency(toCurrency);
@@ -23,6 +26,14 @@ function CurrencyConverter() {
     setAmount(convertedAmount);
     setConvertedAmount(amount);
   }
+
+  useEffect(() => {
+    const urlFrom = searchParams.get('from');
+    const urlTo = searchParams.get('to');
+
+    if (urlFrom) setFromCurrency(urlFrom);
+    if (urlTo) setFromCurrency(urlTo);
+  }, [searchParams]);
 
   useEffect(() => {
     if (!amount || isNaN(amount)) {

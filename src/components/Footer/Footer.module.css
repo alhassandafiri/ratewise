@@ -1,0 +1,35 @@
+.footerSection {
+  width: 100%;
+  padding: 2rem 0;
+  margin-top: auto;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.footerContent {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.copyright {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.footerLink {
+  color: var(--text-primary); 
+  text-decoration: none;
+  position: relative;
+  background-image: linear-gradient(var(--primary-color), var(--primary-color));
+  background-size: 0% 2px;
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
+}
+
+.footerLink:hover {
+  background-size: 100% 1px;
+}

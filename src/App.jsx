@@ -7,6 +7,7 @@ import RatesTable from "./components/RatesTable/RatesTable";
 import NavBar from "./components/NavBar/NavBar";
 import RateHistory from "./components/RateHistory/RateHistory"
 import './App.css';
+import Footer from './components/Footer/Footer';
 
 function AnimatedRoutes() {
   return(
@@ -29,6 +30,7 @@ function App() {
     </div>
     <div className="main-content">
       <AnimatedRoutes />
+      <Footer />
     </div>
   </div>)
 }

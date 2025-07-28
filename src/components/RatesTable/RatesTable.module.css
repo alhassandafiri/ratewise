@@ -22,11 +22,16 @@
 }
 
 .tableHeader {
+  position: sticky;
+  top: 0;
+  background-color: var(--surface-color);
+  z-index: 1;
   color: var(--text-secondary);
   font-size: 0.9rem;
   font-weight: 500;
   border-bottom: 1px solid var(--border-color);
 }
+
 
 .tableRow {
   font-size: 1rem;

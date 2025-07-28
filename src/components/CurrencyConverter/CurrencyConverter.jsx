@@ -32,8 +32,8 @@ function CurrencyConverter() {
     const urlTo = searchParams.get('to');
 
     if (urlFrom) setFromCurrency(urlFrom);
-    if (urlTo) setFromCurrency(urlTo);
-  }, [searchParams]);
+    if (urlTo) setToCurrency(urlTo);
+  }, [searchParams])
 
   useEffect(() => {
     if (!amount || isNaN(amount)) {

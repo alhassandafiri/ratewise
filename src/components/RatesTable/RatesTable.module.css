@@ -15,7 +15,7 @@
 
 .tableHeader, .tableRow {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   padding: 0.75rem 0;
   text-align: center;
@@ -32,6 +32,23 @@
   border-bottom: 1px solid var(--border-color);
 }
 
+
+.tableRowTwoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 1rem 0;
+  font-size: 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.toLabel {
+  margin: 0.75rem 0 0.5rem 0;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: left;
+}
 
 .tableRow {
   font-size: 1rem;
@@ -106,4 +123,25 @@
 
 .rowHint:hover {
   color: var(--primary-color);
+}
+
+.specialFromRow {
+
+  border: 1px solid var(--primary-color);
+  border-radius: 12px;
+  font-weight: 600;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.fromSelector {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
 }

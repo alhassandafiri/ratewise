@@ -5,42 +5,16 @@
   border: 1px solid var(--border-color);
 }
 
+.table {
+  width: 100%;
+}
+
 .tableTitle {
   color: var(--text-primary);
   font-size: 1.25rem;
   font-weight: 600;
   margin: 0 0 1.5rem 0;
   text-align: center;
-}
-
-.tableHeader, .tableRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  padding: 0.75rem 0;
-  text-align: center;
-}
-
-.tableHeader {
-  position: sticky;
-  top: 0;
-  background-color: var(--surface-color);
-  z-index: 1;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  font-weight: 500;
-  border-bottom: 1px solid var(--border-color);
-}
-
-
-.tableRowTwoCol {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  padding: 1rem 0;
-  font-size: 1rem;
-  text-align: center;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .toLabel {
@@ -50,17 +24,74 @@
   text-align: left;
 }
 
+.lastUpdated {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: var(--text-secondary);
+}
+
+.fromSelector {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.addCurrencyRow {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tableHeader,
+.tableRow,
+.tableRowTwoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  text-align: center;
+}
+
+.tableHeader {
+  position: sticky;
+  top: 0;
+  background-color: var(--surface-color);
+  z-index: 1;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 0;
+}
+
 .tableRow {
   font-size: 1rem;
   padding: 1rem 0;
   min-height: 64px;
 }
 
-.tableRow:hover {
-  background-color: rgba(var(--primary-color-rgb), 0.1);
-}
-
-.tableRow:not(:last-child) {
+.tableRowTwoCol {
+  padding: 1rem 0;
+  font-size: 1rem;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -80,30 +111,16 @@
   width: 18px;
   height: 14px;
   border: 1px solid var(--border-color);
-  border-radius: 2px; 
+  border-radius: 50%; /* circle style */
+  object-fit: cover;
 }
 
-.searchInput {
-  width: 100%;
-  padding: 0.5rem 0.75rem;
-  margin-bottom: 1.25rem;
-  font-size: 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  background-color: var(--surface-color);
-  color: var(--text-primary);
-  outline: none;
+.tableRow:hover {
+  background-color: rgba(var(--primary-color-rgb), 0.1);
 }
 
-.searchInput::placeholder {
-  color: var(--text-secondary);
-}
-
-.lastUpdated {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  text-align: center;
-  margin-bottom: 0.5rem;
+.tableRow:not(:last-child) {
+  border-bottom: 1px solid var(--border-color);
 }
 
 .rowHint {
@@ -126,22 +143,13 @@
 }
 
 .specialFromRow {
-
-  border: 1px solid var(--primary-color);
-  border-radius: 12px;
-  font-weight: 600;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  text-align: center;
   padding: 1rem 0.5rem;
   margin-bottom: 1rem;
-  text-align: center;
-}
-
-.fromSelector {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid var(--primary-color);
+  border-radius: 12px;
 }

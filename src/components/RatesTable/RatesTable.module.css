@@ -111,7 +111,7 @@
   width: 18px;
   height: 14px;
   border: 1px solid var(--border-color);
-  border-radius: 50%; /* circle style */
+  border-radius: 2px;
   object-fit: cover;
 }
 

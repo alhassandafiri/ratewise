@@ -35,6 +35,8 @@
 
 .tableRow {
   font-size: 1rem;
+  padding: 1rem 0;
+  min-height: 64px;
 }
 
 .tableRow:hover {
@@ -47,6 +49,9 @@
 
 .currencyPair {
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .rate {

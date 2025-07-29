@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { currencyToCountryCode } from '../../utils/currencyUtils';
+import { currencyToCountryCode, currencyCodeToName } from '../../utils/currencyUtils';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -37,7 +37,6 @@ function RatesTable({ onRowClick }) {
         
         const data = await response.json();
 
-        setRates(data.rates);
         setLastUpdated(new Date().toLocaleString());
 
         if (data.success) {
@@ -90,7 +89,7 @@ if (error) {
   transition={{ duration: 0.4 }}>
 
       <h2 className={styles.tableTitle}>Live Exchange Rates</h2>
-
+      
       {lastUpdated && (
         <p className={styles.lastUpdated}>Last Updated: {lastUpdated}</p>
       )}
@@ -119,7 +118,7 @@ if (error) {
               alt={`${pair.from} flag`}
               className={styles.flag}
             />
-            {pair.from}
+            {currencyCodeToName[pair.from] || pair.from}
           </span>
 
             <span className={styles.currencyPair}>
@@ -128,7 +127,7 @@ if (error) {
               alt={`${pair.to} flag`}
               className={styles.flag}
             />
-            {pair.to}
+            {currencyCodeToName[pair.to] || pair.to}
           </span>
 
             <span className={styles.rate}>

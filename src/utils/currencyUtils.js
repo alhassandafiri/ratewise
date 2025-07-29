@@ -41,6 +41,40 @@ export const currencyToCountryCode = {
   ZAR: 'za'  // South African Rand
 };
 
+export const currencyCodeToName = {
+  USD: 'US Dollar',
+  EUR: 'Euro',
+  JPY: 'Japanese Yen',
+  GBP: 'British Pound',
+  CNY: 'Chinese Yuan',
+  AUD: 'Australian Dollar',
+  CAD: 'Canadian Dollar',
+  CHF: 'Swiss Franc',
+  HKD: 'Hong Kong Dollar',
+  SGD: 'Singapore Dollar',
+  INR: 'Indian Rupee',
+  KRW: 'South Korean Won',
+  SEK: 'Swedish Krona',
+  NOK: 'Norwegian Krone',
+  NZD: 'New Zealand Dollar',
+  MXN: 'Mexican Peso',
+  BRL: 'Brazilian Real',
+  ZAR: 'South African Rand',
+  TWD: 'New Taiwan Dollar',
+  DKK: 'Danish Krone',
+  PLN: 'Polish Zloty',
+  THB: 'Thai Baht',
+  TRY: 'Turkish Lira',
+  ILS: 'Israeli Shekel',
+  AED: 'UAE Dirham',
+  MYR: 'Malaysian Ringgit',
+  CZK: 'Czech Koruna',
+  CLP: 'Chilean Peso',
+  IDR: 'Indonesian Rupiah',
+  HUF: 'Hungarian Forint',
+  SAR: 'Saudi Riyal'
+};
+
 
 export const popularCurrencies = [
   'USD', // US Dollar

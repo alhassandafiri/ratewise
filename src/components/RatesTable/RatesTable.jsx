@@ -130,15 +130,6 @@ function RatesTable({ onRowClick }) {
         />
       </div>
 
-      <div className={styles.addCurrencyRow}>
-        <label>Add a currency:</label>
-        <CustomDropDown
-          options={availableToAdd}
-          selectedValue={null}
-          onSelect={handleAddCurrency}
-        />
-      </div>
-
       <div className={styles.table}>
         <div className={styles.specialFromRow}>
           <span className={styles.currencyPair}>
@@ -152,6 +143,15 @@ function RatesTable({ onRowClick }) {
         </div>
 
         <p className={styles.toLabel}>Exchange rates from {currencyCodeToName[fromCurrency]}:</p>
+
+        <div className={styles.addCurrencyRow}>
+        <label>Add a currency:</label>
+        <CustomDropDown
+          options={availableToAdd}
+          selectedValue={'CAD'}
+          onSelect={handleAddCurrency}
+        />
+      </div>
 
         {fromCurrencyRates.length === 0 && (
           <div className={styles.tableRow}>

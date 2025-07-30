@@ -93,6 +93,7 @@
   padding: 1rem 0;
   font-size: 1rem;
   border-bottom: 1px solid var(--border-color);
+   transition: transform 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 
 .currencyPair {
@@ -126,7 +127,10 @@
 }
 
 .tableRow:hover {
-  background-color: rgba(var(--primary-color-rgb), 0.1);
+  background-color: rgba(var(--primary-color-rgb), 0.05);
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(var(--primary-color-rgb), 0.1);
+  border-radius: 8px;
 }
 
 .tableRow:not(:last-child) {

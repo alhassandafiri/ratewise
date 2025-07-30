@@ -3,6 +3,7 @@ import { currencyCodeToName, currencyToCountryCode } from '../../utils/currencyU
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { IoClose } from "react-icons/io5";
+import { FiArrowUpRight } from "react-icons/fi";
 import { useNavigate } from 'react-router-dom';
 
 import CustomDropDown from '../CustomDropDown/CustomDropDown';
@@ -202,7 +203,7 @@ function RatesTable({ onRowClick }) {
                   }}
                   aria-label={`Convert ${pair.from} to ${pair.to}`}
                 >
-                  ↗
+                  <FiArrowUpRight size={14} />
                 </button>
                 {isCustomCurrency(pair.to) && (
                   <button

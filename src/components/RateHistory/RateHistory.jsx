@@ -10,7 +10,7 @@ import styles from './RateHistory.module.css';
 
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
-    const fullDate = new Date(payload[0].payload.date).toLocaleDateString('en-US', {
+    const fullDate = new Date(payload[0].payload.date).toLocaleDateString('en-GB', {
       year: 'numeric', month: 'long', day: 'numeric',
     });
     return (
@@ -93,7 +93,7 @@ function RateHistory() {
       } else {
         options.day = 'numeric';
       }
-      return date.toLocaleDateString('en-US', options);
+      return date.toLocaleDateString('en-GB', options);
     };
 
 

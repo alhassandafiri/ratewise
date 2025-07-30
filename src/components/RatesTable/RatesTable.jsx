@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { currencyToCountryCode, currencyCodeToName } from '../../utils/currencyUtils';
+import { currencyCodeToName, currencyToCountryCode } from '../../utils/currencyUtils';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
+import { IoClose } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 
-import styles from './RatesTable.module.css';
 import CustomDropDown from '../CustomDropDown/CustomDropDown';
+import styles from './RatesTable.module.css';
 
 function RatesTable({ onRowClick }) {
   const [rates, setRates] = useState([]);
@@ -79,6 +80,20 @@ function RatesTable({ onRowClick }) {
         [fromCurrency]: [...new Set([...current, newTo])]
       };
     });
+  };
+
+  const handleRemoveCurrency = (currencyToRemove) => {
+    setCustomToCurrencies(prev => {
+      const current = prev[fromCurrency] || [];
+      return {
+        ...prev,
+        [fromCurrency]: current.filter(code => code !== currencyToRemove)
+      };
+    });
+  };
+
+  const isCustomCurrency = (currencyCode) => {
+    return customTos.includes(currencyCode);
   };
 
   if (isLoading) {
@@ -178,16 +193,30 @@ function RatesTable({ onRowClick }) {
 
             <span className={styles.rate}>
               {pair.rate.toFixed(4)}
-              <button
-                className={styles.rowHint}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleClick(pair.from, pair.to);
-                }}
-                aria-label={`Convert ${pair.from} to ${pair.to}`}
-              >
-                ↗
-              </button>
+              <div className={styles.rateActions}>
+                <button
+                  className={styles.rowHint}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleClick(pair.from, pair.to);
+                  }}
+                  aria-label={`Convert ${pair.from} to ${pair.to}`}
+                >
+                  ↗
+                </button>
+                {isCustomCurrency(pair.to) && (
+                  <button
+                    className={styles.removeButton}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleRemoveCurrency(pair.to);
+                    }}
+                    aria-label={`Remove ${pair.to} from custom currencies`}
+                  >
+                    <IoClose size={14} />
+                  </button>
+                )}
+              </div>
             </span>
           </div>
         ))}

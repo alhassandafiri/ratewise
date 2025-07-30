@@ -105,6 +105,16 @@
 .rate {
   font-weight: 600;
   color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.rateActions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .flag {
@@ -132,14 +142,38 @@
   cursor: pointer;
   display: none;
   transition: color 0.2s ease;
+  padding: 2px;
+  border-radius: 4px;
 }
 
-.tableRow:hover .rowHint {
-  display: inline;
+.removeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: none;
+  padding: 2px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+.tableRow:hover .rowHint,
+.tableRow:hover .removeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .rowHint:hover {
   color: var(--primary-color);
+  background-color: rgba(var(--primary-color-rgb), 0.1);
+}
+
+.removeButton:hover {
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+  opacity: 1;
 }
 
 .specialFromRow {
@@ -150,6 +184,5 @@
   padding: 1rem 0.5rem;
   margin-bottom: 1rem;
   font-weight: 600;
-  border: 1px solid var(--primary-color);
   border-radius: 12px;
 }

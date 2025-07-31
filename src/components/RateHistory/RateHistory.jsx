@@ -127,7 +127,7 @@ function RateHistory() {
         <div className={styles.chartWrapper}>
           {!isLoading && !error && data.length > 0 && (
             <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+              <LineChart data={data} margin={{ top: 5, right: 30, left: 10, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color)" />
                 
                 <XAxis 

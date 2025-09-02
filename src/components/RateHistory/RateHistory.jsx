@@ -51,7 +51,7 @@ function RateHistory() {
         startDate.setMonth(today.getMonth() - selectedRange.months);
         const startDateString = startDate.toISOString().split('T')[0];
         try {
-          const response = await fetch(`http://localhost/currency-api/public/api/history?from=${fromCurrency}&to=${toCurrency}&start_date=${startDateString}`);
+          const response = await fetch(`https://ratewise-backend.onrender.com/api/history?from=${fromCurrency}&to=${toCurrency}&start_date=${startDateString}`);
           if (!response.ok) throw new Error('Failed to fetch historical data.');
           const result = await response.json();
           if (result.success) {

@@ -50,7 +50,7 @@ function CurrencyConverter() {
     const fetchConversion = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`http://localhost/currency-api/public/api/convert?from=${fromCurrency}&to=${toCurrency}&amount=${amount}`);
+        const response = await fetch(`https://ratewise-backend.onrender.com/api/convert?from=${fromCurrency}&to=${toCurrency}&amount=${amount}`);
 
         if (!response.ok) {
           throw new Error('Network response from backend was not ok.');

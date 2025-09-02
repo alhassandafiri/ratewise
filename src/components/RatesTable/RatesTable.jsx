@@ -29,7 +29,7 @@ function RatesTable({ onRowClick }) {
   useEffect(() => {
     const fetchRates = async () => {
       try {
-        const response = await fetch('http://localhost/currency-api/public/api/rates');
+        const response = await fetch('https://ratewise-backend.onrender.com/api/rates');
         if (!response.ok) throw new Error('Something went wrong while fetching rates.');
 
         const data = await response.json();
